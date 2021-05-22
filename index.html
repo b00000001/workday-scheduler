@@ -2,61 +2,117 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <title>Weekday Scheduler</title>
 </head>
 
-<body class='container'>
-    <header class='row'>
+<body class="container">
+    <header class="row">
         <div class="row border-bottom border-dark">
             <div class="col text-center">
-                <h1>Weekday Scheduler </h1>
+                <h1>Weekday Scheduler</h1>
                 <p>A simple way to schedule your tasks day-to-day.</p>
             </div>
+            <div class="current__time">Current Time:</div>
         </div>
     </header>
 
     <section class="container row d-flex">
-        <div class="col" id='time__col'>
-            <ul>9 AM</ul>
-            <ul>10 AM</ul>
-            <ul>11 AM</ul>
-            <ul>12 PM</ul>
-            <ul>1 PM</ul>
-            <ul>2 PM</ul>
-            <ul>3 PM</ul>
-            <ul>4 PM</ul>
-            <ul>5 PM</ul>
-
+        <div class="col" id="time__col">
+            <ul>
+                9 AM
+            </ul>
+            <ul>
+                10 AM
+            </ul>
+            <ul>
+                11 AM
+            </ul>
+            <ul>
+                12 PM
+            </ul>
+            <ul>
+                1 PM
+            </ul>
+            <ul>
+                2 PM
+            </ul>
+            <ul>
+                3 PM
+            </ul>
+            <ul>
+                4 PM
+            </ul>
+            <ul>
+                5 PM
+            </ul>
         </div>
-        <div class="col-9 border">
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
-            <ul><input type="text"></ul>
+        <div class="col-9" id='input__col'>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
+            <ul>
+                <input type="text" class="w-100" />
+            </ul>
         </div>
         <div class="col">
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
-            <ul>Confirm</ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
+            <ul>
+                Confirm
+            </ul>
         </div>
     </section>
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>
