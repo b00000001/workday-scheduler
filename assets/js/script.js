@@ -32,19 +32,29 @@ var timeSlots = [
 		"5PM": { text: "", confirm: false, hour: 17 },
 	},
 ];
-function init() {
-	checkAvail();
-	var clockDisplay = setInterval(() => {
-		var time = new Date();
-		currentTime.innerText = time;
-	}, 1000);
-}
+checkAvail();
+var clockDisplay = setInterval(() => {
+	var time = new Date();
+	currentTime.innerText = time;
+}, 1000);
+function init() {}
 
 function checkAvail() {
 	var currentHour = time._d.getHours(); // Gets the current hour (0-24)
-	if (currentHour < 9 || currentHour > 17) {
+	if (currentHour > 9 && currentHour < 17) {
 		// 9AM to 5PM
 		// Checks if current time is within the range of times (9am - 5pm)
+		var inputCol = document.getElementById("input__col");
+		inputColchildren = inputCol.children;
+		for (var i = 0; i < inputColchildren.length; i++) {
+			inputColchildren[i].children[0].setAttribute(
+				"class",
+				" form-control input-lg bg-success"
+			);
+		}
+
+		console.log("Time out of bounds");
+	} else {
 		var inputCol = document.getElementById("input__col");
 		inputColchildren = inputCol.children;
 		for (var i = 0; i < inputColchildren.length; i++) {
@@ -53,8 +63,6 @@ function checkAvail() {
 				" form-control input-lg bg-danger"
 			);
 		}
-
-		console.log("Time out of bounds");
 	}
 }
 
