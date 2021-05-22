@@ -40,14 +40,18 @@ var timeSlots = [
 function init() {
 	checkAvail();
 	for (var i = 0; i < confirmCol.children.length; i++) {
+		// Algorithm dynamically creates submit buttons based on the amount of input fields in the page
 		var makeButton = document.createElement("button");
 		makeButton.innerText = "Confirm";
 		makeButton.setAttribute("class", "btn btn-primary");
-		makeButton.addEventListener("click", function () {
-			console.log("Click!");
-		});
+		makeButton.addEventListener("click", savetoStorage);
 		console.log(makeButton);
 		confirmCol.children[i].append(makeButton);
+	}
+	// add event listeners to input fields
+	for (var i = 0; i < inputCol.children.length; i++) {
+		//add event listener for every input field
+		inputCol.children[i].children[0].setAttribute("onkeydown", "getInput()");
 	}
 	var clockDisplay = setInterval(() => {
 		var time = new Date();
@@ -80,9 +84,11 @@ function checkAvail() {
 		}
 	}
 }
-
-function savetoStorage() {
-	console.log("confirm button");
+function getInput() {
+	console.log("Typing");
+}
+function savetoStorage(event) {
+	console.log(event);
 }
 
 init();
