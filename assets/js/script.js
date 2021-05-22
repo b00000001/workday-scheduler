@@ -25,15 +25,15 @@ var confirmCol = document.getElementById("confirm__col");
 var timeSlots = [
 	{
 		// Data structure for holding data of TODO App
-		"9AM": { text: "", confirm: false, hour: 9 },
-		"10AM": { text: "", confirm: false, hour: 10 },
-		"12AM": { text: "", confirm: false, hour: 11 },
-		"11AM": { text: "", confirm: false, hour: 12 },
-		"1PM": { text: "", confirm: false, hour: 13 },
-		"2PM": { text: "", confirm: false, hour: 14 },
-		"3PM": { text: "", confirm: false, hour: 15 },
-		"4PM": { text: "", confirm: false, hour: 16 },
-		"5PM": { text: "", confirm: false, hour: 17 },
+		900: { text: "", confirm: false, hour: 9 },
+		1000: { text: "", confirm: false, hour: 10 },
+		1100: { text: "", confirm: false, hour: 11 },
+		1200: { text: "", confirm: false, hour: 12 },
+		1300: { text: "", confirm: false, hour: 13 },
+		1400: { text: "", confirm: false, hour: 14 },
+		1500: { text: "", confirm: false, hour: 15 },
+		1600: { text: "", confirm: false, hour: 16 },
+		1700: { text: "", confirm: false, hour: 17 },
 	},
 ];
 
@@ -66,20 +66,31 @@ function checkAvail() {
 	if (currentHour > 9 && currentHour < 17) {
 		for (var i = 0; i < Object.keys(timeSlots[0]).length; i++) {
 			// For every item in timeslots[0]: 9 Items
-			if (currentHour < timeSlots[0][Object.keys(timeSlots[0])[i]].hour) {
-				var inputColchildren = inputCol.children;
-				inputColchildren[i].children[0].setAttribute(
-					"class",
-					" form-control input-lg bg-success"
-				);
-			} else {
-				inputColchildren = inputCol.children;
-				for (var j = 0; j < inputColchildren.length; j++) {
-					inputColchildren[j].children[0].setAttribute(
+			switch (
+				currentHour === timeSlots[0][Object.keys(timeSlots[0])[i]].hour // Switch statement to check current hour and color chart accordingly
+			) {
+				case true:
+					var inputColchildren = inputCol.children;
+					inputColchildren[i].children[0].setAttribute(
 						"class",
 						" form-control input-lg bg-secondary"
 					);
-				}
+					break;
+				case false:
+					if (currentHour > timeSlots[0][Object.keys(timeSlots[0])[i]].hour) {
+						var inputColchildren = inputCol.children;
+						inputColchildren[i].children[0].setAttribute(
+							"class",
+							" form-control input-lg bg-danger"
+						);
+					} else {
+						var inputColchildren = inputCol.children;
+						inputColchildren[i].children[0].setAttribute(
+							"class",
+							" form-control input-lg bg-success"
+						);
+					}
+					break;
 			}
 		}
 	}
