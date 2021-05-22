@@ -32,36 +32,40 @@ var timeSlots = [
 		"5PM": { text: "", confirm: false, hour: 17 },
 	},
 ];
-checkAvail();
-var clockDisplay = setInterval(() => {
-	var time = new Date();
-	currentTime.innerText = time;
-}, 1000);
-function init() {}
+
+function init() {
+	checkAvail();
+	var clockDisplay = setInterval(() => {
+		var time = new Date();
+		currentTime.innerText = time;
+	}, 1000);
+	currentTime.innerText = clockDisplay;
+}
 
 function checkAvail() {
 	var currentHour = time._d.getHours(); // Gets the current hour (0-24)
+	// Checks if current time is within the range of times (9am - 5pm)
 	if (currentHour > 9 && currentHour < 17) {
-		// 9AM to 5PM
-		// Checks if current time is within the range of times (9am - 5pm)
 		var inputCol = document.getElementById("input__col");
-		inputColchildren = inputCol.children;
-		for (var i = 0; i < inputColchildren.length; i++) {
-			inputColchildren[i].children[0].setAttribute(
-				"class",
-				" form-control input-lg bg-success"
-			);
-		}
 
-		console.log("Time out of bounds");
-	} else {
-		var inputCol = document.getElementById("input__col");
-		inputColchildren = inputCol.children;
-		for (var i = 0; i < inputColchildren.length; i++) {
-			inputColchildren[i].children[0].setAttribute(
-				"class",
-				" form-control input-lg bg-danger"
-			);
+		for (var i = 0; i < Object.keys(timeSlots[0]).length; i++) {
+			// For every item in timeslots[0]: 9 Items
+			if (currentHour < timeSlots[0][Object.keys(timeSlots[0])[i]].hour) {
+				var inputColchildren = inputCol.children;
+				inputColchildren[i].children[0].setAttribute(
+					"class",
+					" form-control input-lg bg-success"
+				);
+			} else {
+				var inputCol = document.getElementById("input__col");
+				inputColchildren = inputCol.children;
+				for (var j = 0; j < inputColchildren.length; j++) {
+					inputColchildren[j].children[0].setAttribute(
+						"class",
+						" form-control input-lg bg-secondary"
+					);
+				}
+			}
 		}
 	}
 }
