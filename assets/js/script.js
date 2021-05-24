@@ -5,7 +5,7 @@ var currentTime = document.querySelector(".current__time");
 var inputCol = document.getElementById("input__col");
 var confirmCol = document.getElementById("confirm__col");
 var timeslotArray = []; // Array to hold the full array of timeslots that have been altered
-var currentHour = time._d.getHours(); // Gets the current hour (0-24)
+var currentHour = 11; // Gets the current hour (0-24)
 var timeSlots = JSON.parse(localStorage.getItem("timeSlots")) || {
 	// Data structure for holding data of TODO App
 	9: "",
@@ -74,25 +74,23 @@ function checkAvail() {
 		for (var i = 0; i < Object.keys(timeSlots).length; i++) {
 			// For every item in timeSlots: 9 Items
 
+			var inputColchildren = inputCol.children[i].children[0];
 			switch (currentHour === parseInt(Object.keys(timeSlots)[i])) {
 				// Switch statement to check current hour and color chart accordingly
 				case true:
-					var inputColchildren = inputCol.children;
-					inputColchildren[i].children[0].setAttribute(
+					inputColchildren.setAttribute(
 						"class",
 						" form-control input-lg bg-secondary"
 					);
 					break;
 				case false:
 					if (currentHour > parseInt(Object.keys(timeSlots)[i])) {
-						var inputColchildren = inputCol.children;
-						inputColchildren[i].children[0].setAttribute(
+						inputColchildren.setAttribute(
 							"class",
 							" form-control input-lg bg-danger"
 						);
 					} else {
-						var inputColchildren = inputCol.children;
-						inputColchildren[i].children[0].setAttribute(
+						inputColchildren.setAttribute(
 							"class",
 							" form-control input-lg bg-success"
 						);
@@ -109,7 +107,7 @@ function checkAvail() {
         */
 		for (var i = 0; i < Object.keys(timeSlots).length; i++) {
 			// For every item in timeSlots: 9 Items
-			var inputColchildren = inputCol.children;
+
 			inputColchildren[i].children[0].setAttribute(
 				"class",
 				" form-control input-lg bg-danger"
