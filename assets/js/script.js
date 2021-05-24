@@ -4,7 +4,7 @@ var currentTime = document.querySelector(".current__time");
 // confirmButton.addEventListener("click", savetoStorage);
 var inputCol = document.getElementById("input__col");
 var confirmCol = document.getElementById("confirm__col");
-var timeslotArray = [];
+var timeslotArray = []; // Array to hold the full array of timeslots that have been altered
 var currentHour = time._d.getHours(); // Gets the current hour (0-24)
 var timeSlots = [
 	{
@@ -52,16 +52,16 @@ function init() {
     if so, the corresponding input value is retrieved from storage.
     ----
     */
-	// if (window.localStorage.timeSlotsstore) {
-	// 	storageData = JSON.parse(window.localStorage.timeSlotsstore);
-	// 	console.log("Data in local store", storageData);
-	// 	for (var i = 0; i < Object.keys(storageData).length; i++) {
-	// 		if (storageData[Object.keys(storageData)[i]].text) {
-	// 			inputCol.children[i].children[0].value =
-	// 				storageData[Object.keys(storageData)[0]].text;
-	// 		}
-	// 	}
-	// }
+	if (window.localStorage.timeSlotsstore) {
+		storageData = JSON.parse(window.localStorage.timeSlotsstore);
+		console.log("Data in local store", storageData);
+		for (var i = 0; i < Object.keys(storageData).length; i++) {
+			if (storageData[Object.keys(storageData)[i]].text) {
+				inputCol.children[i].children[0].value =
+					storageData[Object.keys(storageData)[0]].text;
+			}
+		}
+	}
 }
 
 var clockDisplay = setInterval(() => {
@@ -79,13 +79,16 @@ Future: Green
 */
 function checkAvail() {
 	// Checks if current time is within the range of times (9am - 5pm)
-	if (currentHour > 9 && currentHour < 17) {
+	if (currentHour >= 9 && currentHour <= 17) {
+		console.log("office hours");
 		for (var i = 0; i < Object.keys(timeSlots[0]).length; i++) {
 			// For every item in timeSlots[0]: 9 Items
 			switch (
-				currentHour === timeSlots[0][Object.keys(timeSlots[0])[i]].hour // Switch statement to check current hour and color chart accordingly
+				currentHour ===
+				parseInt(timeSlots[0][Object.keys(timeSlots[0])[i]].hour) // Switch statement to check current hour and color chart accordingly
 			) {
 				case true:
+					console.log("current hour");
 					var inputColchildren = inputCol.children;
 					inputColchildren[i].children[0].setAttribute(
 						"class",
@@ -133,9 +136,8 @@ function savetoStorage(value, index) {
 	timeSlots[0][Object.keys(timeSlots[0])[index]].index = index;
 
 	timeslotArray.push(timeSlots[0][Object.keys(timeSlots[0])[index]]);
-	console.log(JSON.stringify(timeslotArray));
-	console.log("parsed", JSON.parse(timeslotArray));
-	localStorage.setItem("timeSlotsstore", timeslotArray);
+
+	localStorage.setItem("timeSlotsstore", JSON.stringify(timeslotArray));
 }
 
 init();
