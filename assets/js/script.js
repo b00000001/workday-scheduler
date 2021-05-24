@@ -5,7 +5,7 @@ var currentTime = document.querySelector(".current__time");
 var inputCol = document.getElementById("input__col");
 var confirmCol = document.getElementById("confirm__col");
 var timeslotArray = []; // Array to hold the full array of timeslots that have been altered
-var currentHour = 11; // Gets the current hour (0-24)
+var currentHour = time._d.getHours(); // Gets the current hour (0-24)
 var timeSlots = JSON.parse(localStorage.getItem("timeSlots")) || {
 	// Data structure for holding data of TODO App
 	9: "",
@@ -107,8 +107,8 @@ function checkAvail() {
         */
 		for (var i = 0; i < Object.keys(timeSlots).length; i++) {
 			// For every item in timeSlots: 9 Items
-
-			inputColchildren[i].children[0].setAttribute(
+			var inputColchildren = inputCol.children[i].children[0];
+			inputColchildren.setAttribute(
 				"class",
 				" form-control input-lg bg-danger"
 			);
