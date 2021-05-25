@@ -80,19 +80,19 @@ function checkAvail() {
 				case true:
 					inputColchildren.setAttribute(
 						"class",
-						" form-control input-lg bg-secondary"
+						" form-control input-lg color-white bg-secondary"
 					);
 					break;
 				case false:
 					if (currentHour > parseInt(Object.keys(timeSlots)[i])) {
 						inputColchildren.setAttribute(
 							"class",
-							" form-control input-lg bg-danger"
+							" form-control input-lg text-white bg-danger"
 						);
 					} else {
 						inputColchildren.setAttribute(
 							"class",
-							" form-control input-lg bg-success"
+							" form-control input-lg text-white bg-success"
 						);
 					}
 					break;
@@ -110,7 +110,7 @@ function checkAvail() {
 			var inputColchildren = inputCol.children[i].children[0];
 			inputColchildren.setAttribute(
 				"class",
-				" form-control input-lg bg-danger"
+				" form-control input-lg text-light bg-danger"
 			);
 		}
 	}
